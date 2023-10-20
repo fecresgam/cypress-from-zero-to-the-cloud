@@ -125,11 +125,29 @@ describe('TAT Customer Service Center', () => {
   });  
 
   //Lesson 5 - Checkboxes
-  it.only('checks both checkboxes, then unchecks the last one', () => {
+  it('checks both checkboxes, then unchecks the last one - mi estilo', () => {
     cy.get('#email-checkbox').check().should('be.checked');
     cy.get('#phone-checkbox').check().should('be.checked');
     cy.get('#phone-checkbox').uncheck().should('be.not.checked');
   });  
 
+  it('checks both checkboxes, then unchecks the last one - estilo Walmir', () => {
+    cy.get('input[type="checkbox"')
+    .check()
+    .should('be.checked')
+    .last()
+    .uncheck()
+    .should('be.not.checked');
+  });  
+  
+  it.only('checks both checkboxes, then unchecks the last one - jugando', () => {
+    cy.get('input[type="checkbox"')
+      .as('misChecks');
+    cy.get('@misChecks')
+      .check();
+    
+    cy.get('@misChecks')
+      .should('be.checked');
+  });  
   
 })
