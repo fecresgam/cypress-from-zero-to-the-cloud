@@ -151,7 +151,7 @@ describe('TAT Customer Service Center', () => {
   });  
   
 //Lesson 6
-it.only('L6 - selects a file from the fixtures folder', () => {
+it('L6 - selects a file from the fixtures folder', () => {
   cy.get('#file-upload')
     .selectFile('./cypress/fixtures/example.json')
     .should(input => {
@@ -160,5 +160,23 @@ it.only('L6 - selects a file from the fixtures folder', () => {
     });
 });  
 
+it('L6 - selects a file from the fixtures folder - dragndrop', () => {
+  cy.get('#file-upload')
+    .selectFile('./cypress/fixtures/example.json', {action: 'drag-drop'})
+    .should(input => {
+      //console.log(input);
+      expect(input[0].files[0].name).to.equal('example.json');
+    });
+});  
 
+
+it.only('L6 - selects a file from the fixtures folder - fixture alias', () => {
+  cy.fixture("example.json").as('miFile');
+  cy.get('#file-upload')
+    .selectFile('@miFile')
+    .should(input => {
+      //console.log(input);
+      expect(input[0].files[0].name).to.equal('example.json');
+    });
+});  
 })
