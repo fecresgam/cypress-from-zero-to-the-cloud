@@ -104,8 +104,17 @@ describe('TAT Customer Service Center', () => {
     cy.get('.error').should('be.visible');
   });
 
-  it.only('E2 - uso de commands', () => {
+  it('E2 - uso de commands', () => {
     cy.sendAndCheckValidationError();
+  });
+
+  //Lesson 3
+  it('selects a product (YouTube)', () => {
+    cy.get('#product').select('youtube').should('have.value','youtube');
+  });
+
+  it.only('selects a product (2)', () => {
+    cy.get('#product').select(2).should('have.value','courses');
   });
 
 })
