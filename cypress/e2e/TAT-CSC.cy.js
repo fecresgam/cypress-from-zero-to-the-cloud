@@ -62,7 +62,7 @@ describe('TAT Customer Service Center', () => {
     cy.get('#email').type('nombre@empresa.com', {delay: 0});
     //cy.get('.tat-service');
     // cy.get('#email-checkbox');
-     cy.get('#phone-checkbox').click();
+     cy.get('#phone-checkbox').check();
     cy.get('#open-text-area').type(
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas imperdiet ullamcorper dui, eu pulvinar ante commodo vitae. Vestibulum a venenatis sem. In in lorem lobortis, porttitor tortor vitae, hendrerit lectus. Quisque facilisis, ante non sollicitudin vestibulum, ante est sagittis eros, eget mollis lectus lectus sit amet ex. Aliquam ultrices ex eget pellentesque hendrerit. Nam suscipit, felis in viverra euismod, lorem diam fermentum quam, id vulputate lectus metus at elit. Aenean maximus a magna vitae tincidunt. Sed sagittis ultrices nisi nec posuere. Donec ac egestas velit, sit amet pulvinar sem. Curabitur semper, felis nec blandit tincidunt, massa diam mattis nisl, a dignissim libero libero aliquam nisl. Sed ornare turpis eu arcu luctus pulvinar. Nam semper sollicitudin mollis.", 
       { delay: 0 });
@@ -113,8 +113,15 @@ describe('TAT Customer Service Center', () => {
     cy.get('#product').select('youtube').should('have.value','youtube');
   });
 
-  it.only('selects a product (2)', () => {
+  it('selects a product (2)', () => {
     cy.get('#product').select(2).should('have.value','courses');
   });
+
+  //Lesson 4 - Radio Buttons
+  it.only('checks the type of service "Feedback"', () => {
+    cy.get('input[type="radio"][name="tat-service"][value=help]').check().should('be.checked');
+    cy.get('input[type="radio"][name="tat-service"][value=praise]').check().should('be.checked');
+    cy.get('input[type="radio"][name="tat-service"][value=feedback]').check().should('be.checked');
+  });  
 
 })
