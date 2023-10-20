@@ -8,24 +8,24 @@ describe('TAT Customer Service Center', () => {
 
 
   // Exercise 1
-  it('E1 - checks the application title - eq', () => {
+  it('L1 - checks the application title - eq', () => {
     cy.title().should('eq', 'TAT Customer Service Center');
   });
 
-  it('E1 - checks the application title - be.equal', () => {
+  it('L1 - checks the application title - be.equal', () => {
     cy.title().should('be.equal', 'TAT Customer Service Center');
   });
 
-  it('E1 - checks the application title - include', () => {
+  it('L1 - checks the application title - include', () => {
     cy.title().should('include', 'TAT Customer');
   });
 
   //Exercise 2
-  it('E2 - playing', () => {
+  it('L2 - playing', () => {
     cy.contains('Send').click();
   });
 
-  it('E2 - fills in the required fields and submits the form', () => {
+  it('L2 - fills in the required fields and submits the form', () => {
     cy.get('#firstName').type('Nombre Propio', {delay: 0});
     cy.get('#lastName').type('Apellido1 Apellido2', {delay: 0});
     cy.get('#email').type('nombre@empresa.com', {delay: 0});
@@ -38,7 +38,7 @@ describe('TAT Customer Service Center', () => {
     cy.sendAndCheckValidationSuccess();
   });
 
-  it('E2 - displays an error message when submitting the form with an email with invalid formatting', () => {
+  it('L2 - displays an error message when submitting the form with an email with invalid formatting', () => {
     cy.get('#firstName').type('Nombre Propio', {delay: 0});
     cy.get('#lastName').type('Apellido1 Apellido2', {delay: 0});
     cy.get('#email').type('nombreempresa.com', {delay: 0});
@@ -52,11 +52,11 @@ describe('TAT Customer Service Center', () => {
     cy.get('.error').should('be.visible');
   });
 
-  it('E2 - phone only accept nunmbers', () => {
+  it('L2 - phone only accept nunmbers', () => {
     cy.get('#phone').type('AUBUONou').should('have.value', '');
   });
 
- it('E2 - displays an error message when the phone becomes required but is not filled in before the form submission', () => {
+ it('L2 - displays an error message when the phone becomes required but is not filled in before the form submission', () => {
     cy.get('#firstName').type('Nombre Propio', {delay: 0});
     cy.get('#lastName').type('Apellido1 Apellido2', {delay: 0});
     cy.get('#email').type('nombre@empresa.com', {delay: 0});
@@ -70,7 +70,7 @@ describe('TAT Customer Service Center', () => {
     cy.get('.error').should('be.visible');
   });
 
-  it('E2 - fills and clears the first name, last name, email, and phone fields', () => {
+  it('L2 - fills and clears the first name, last name, email, and phone fields', () => {
     cy.get('#firstName')
       .type('Nombre Propio')
       .should('have.value','Nombre Propio')
@@ -94,44 +94,44 @@ describe('TAT Customer Service Center', () => {
   });
 
 
-  it('E2 - displays an error message when submitting the form without filling the required fields', () => {
+  it('L2 - displays an error message when submitting the form without filling the required fields', () => {
     cy.contains('Send').click();
     cy.get('.error').should('be.visible');
   });
 
-  it('E2 - uso extendido de contains', () => {
+  it('L2 - uso extendido de contains', () => {
     cy.contains('button','Send').click();
     cy.get('.error').should('be.visible');
   });
 
-  it('E2 - uso de commands', () => {
+  it('L2 - uso de commands', () => {
     cy.sendAndCheckValidationError();
   });
 
   //Lesson 3
-  it('selects a product (YouTube)', () => {
+  it('L3 - selects a product (YouTube)', () => {
     cy.get('#product').select('youtube').should('have.value','youtube');
   });
 
-  it('selects a product (2)', () => {
+  it('L3 - selects a product (2)', () => {
     cy.get('#product').select(2).should('have.value','courses');
   });
 
   //Lesson 4 - Radio Buttons
-  it('checks the type of service "Feedback"', () => {
+  it('L4 - checks the type of service "Feedback"', () => {
     cy.get('input[type="radio"][name="tat-service"][value=help]').check().should('be.checked');
     cy.get('input[type="radio"][name="tat-service"][value=praise]').check().should('be.checked');
     cy.get('input[type="radio"][name="tat-service"][value=feedback]').check().should('be.checked');
   });  
 
   //Lesson 5 - Checkboxes
-  it('checks both checkboxes, then unchecks the last one - mi estilo', () => {
+  it('L5 - checks both checkboxes, then unchecks the last one - mi estilo', () => {
     cy.get('#email-checkbox').check().should('be.checked');
     cy.get('#phone-checkbox').check().should('be.checked');
     cy.get('#phone-checkbox').uncheck().should('be.not.checked');
   });  
 
-  it('checks both checkboxes, then unchecks the last one - estilo Walmir', () => {
+  it('L5 - checks both checkboxes, then unchecks the last one - estilo Walmir', () => {
     cy.get('input[type="checkbox"')
     .check()
     .should('be.checked')
@@ -140,7 +140,7 @@ describe('TAT Customer Service Center', () => {
     .should('be.not.checked');
   });  
   
-  it.only('checks both checkboxes, then unchecks the last one - jugando', () => {
+  it.only('L5 - checks both checkboxes, then unchecks the last one - jugando', () => {
     cy.get('input[type="checkbox"')
       .as('misChecks');
     cy.get('@misChecks')
