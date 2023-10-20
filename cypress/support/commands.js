@@ -23,3 +23,15 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+Cypress.Commands.add('sendAndCheckValidationError', () => { 
+  cy.contains('button','Send').click();
+  cy.get('.error').should('be.visible');
+});
+
+Cypress.Commands.add('sendAndCheckValidationSuccess', () => { 
+    cy.contains('button','Send').click();
+    cy.get('.success').should('be.visible');
+  });
+  
