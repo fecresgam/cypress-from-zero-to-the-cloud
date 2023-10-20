@@ -118,10 +118,18 @@ describe('TAT Customer Service Center', () => {
   });
 
   //Lesson 4 - Radio Buttons
-  it.only('checks the type of service "Feedback"', () => {
+  it('checks the type of service "Feedback"', () => {
     cy.get('input[type="radio"][name="tat-service"][value=help]').check().should('be.checked');
     cy.get('input[type="radio"][name="tat-service"][value=praise]').check().should('be.checked');
     cy.get('input[type="radio"][name="tat-service"][value=feedback]').check().should('be.checked');
   });  
 
+  //Lesson 5 - Checkboxes
+  it.only('checks both checkboxes, then unchecks the last one', () => {
+    cy.get('#email-checkbox').check().should('be.checked');
+    cy.get('#phone-checkbox').check().should('be.checked');
+    cy.get('#phone-checkbox').uncheck().should('be.not.checked');
+  });  
+
+  
 })
