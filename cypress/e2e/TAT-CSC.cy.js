@@ -170,7 +170,7 @@ it('L6 - selects a file from the fixtures folder - dragndrop', () => {
 });  
 
 
-it.only('L6 - selects a file from the fixtures folder - fixture alias', () => {
+it('L6 - selects a file from the fixtures folder - fixture alias', () => {
   cy.fixture("example.json").as('miFile');
   cy.get('#file-upload')
     .selectFile('@miFile')
@@ -179,4 +179,21 @@ it.only('L6 - selects a file from the fixtures folder - fixture alias', () => {
       expect(input[0].files[0].name).to.equal('example.json');
     });
 });  
+
+// Lesson 7 - Links that open in other tab
+it('L7 - verifies that the privacy policy page opens in another tab without the need for a click', () => {
+  cy.contains('a','Privacy Policy').should('have.attr','href','privacy.html').should('have.attr','target','_blank');
+});  
+
+it.only('L7 - independently test the privacy policy page', () => {
+  cy.contains('a','Privacy Policy').invoke('removeAttr','target').click();
+  cy.contains('We do not save data submitted in the TAT CSC application form.');
+  cy.contains('We use HTML, CSS and JavaScript technologies to simulate a real application.');
+  cy.contains('However, the application is an example, without any data persistence, and used for teaching purposes.');
+  cy.contains('Talking About Testing');
+});  
+
+
+
+
 })
