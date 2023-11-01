@@ -16,4 +16,4 @@ Run `npm install` (or `npm i` for the short version) to install the dev dependen
 
 Run `npm test` (or `npm t` for the short version) to run the tests in headless mode.
 
-Or, run `npm run cy:open` to open the Cypress App and run the tests in interactive mode.
+Or, run `npm run cy:open` to open the Cypress App and run the tests in interactive mode..
