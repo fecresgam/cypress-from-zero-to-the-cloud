@@ -193,7 +193,7 @@ it('L7 - independently test the privacy policy page', () => {
   cy.contains('We do not save data submitted in the TAT CSC application form.');
   cy.contains('We use HTML, CSS and JavaScript technologies to simulate a real application.');
   cy.contains('However, the application is an example, without any data persistence, and used for teaching purposes.');
-  cy.contains('Talking About Testingaa');
+  cy.contains('Talking About Testing');
 });  
 
 
