@@ -187,7 +187,7 @@ it('L7 - verifies that the privacy policy page opens in another tab without the 
     .should('have.attr','target','_blank');
 });  
 
-it.only('L7 - independently test the privacy policy page', () => {
+it('L7 - independently test the privacy policy page', () => {
   cy.contains('a','Privacy Policy')
     .invoke('removeAttr','target').click();
   cy.contains('We do not save data submitted in the TAT CSC application form.');
